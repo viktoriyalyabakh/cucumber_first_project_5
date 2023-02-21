@@ -31,7 +31,7 @@ public class PaginationPage extends BasePage {
     @FindBy(css = ".Pagination_pagBodyData__up2c0 p")
     public List<WebElement> cityInfo;
 
-    @FindBy(css = "city_image")
+    @FindBy(css = ".city_image")
     public WebElement cityImage;
 
 

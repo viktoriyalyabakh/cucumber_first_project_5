@@ -1,3 +1,4 @@
+@Regression
 Feature: Pagination Page Functionality
 
   Background:

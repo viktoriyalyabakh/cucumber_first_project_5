@@ -7,7 +7,6 @@ import io.cucumber.datatable.DataTable;
 import org.junit.Assert;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
-import pages.BasePage;
 import pages.FrontendTestingHomePage;
 import pages.PaginationPage;
 import utils.Driver;
@@ -85,14 +84,15 @@ public class PaginationStep {
         while (paginationPage.nextButton.isEnabled()){
             paginationPage.nextButton.click();
         }
+        Assert.assertFalse(paginationPage.nextButton.isEnabled());
     }
 
     @And("user should see city with info below and an image")
     public void userShouldSeeCityWithInfoBelowAndAnImage(DataTable info) {
+        Assert.assertTrue(paginationPage.cityImage.isDisplayed());
             for (int i = 0; i < info.asList().size(); i++){
-                //Waiter.pause(2);
-                Assert.assertEquals(paginationPage.cityInfo.get(i).getText(), info.asList().get(i));
-                System.out.println(paginationPage.cityInfo.get(i).getText());
+                Assert.assertEquals(info.asList().get(i), paginationPage.cityInfo.get(i).getText());
+                //System.out.println(paginationPage.cityInfo.get(i).getText());
         }
         paginationPage.nextButton.click();
     }
